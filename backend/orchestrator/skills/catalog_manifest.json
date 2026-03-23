@@ -1,0 +1,32 @@
+{
+  "entries": [
+    {
+      "description": "Low-risk baseline diagnostics for host + workspace readiness.",
+      "id": "repo_health_check",
+      "risk_level": "low",
+      "tested": "smoke",
+      "title": "Repo Health Check",
+      "trust": "mmy-curated",
+      "workflow_text": "name: repo_health_check\ndescription: Run lightweight repository health checks and summarize outcomes.\nrisk_level: low\nmanifest:\n  purpose: Validate baseline project health before larger runs.\n  tools: [system_info]\n  data_scope: [repo_metadata, test_outputs]\n  permissions: [read_repo]\n  approval_policy: draft_only\n  rate_limits:\n    actions_per_hour: 30\n  budgets:\n    usd_cap: 1.0\n  kill_switch:\n    enabled: true\n  audit_sink: server.audit\n  failure_mode: fail_closed\nsteps:\n  - id: smoke\n    tool: system_info\n    args: {}\n"
+    },
+    {
+      "description": "Fetch up to 3 URLs and produce a grounded summary brief.",
+      "id": "web_research_brief",
+      "risk_level": "medium",
+      "tested": "schema",
+      "title": "Web Research Brief",
+      "trust": "mmy-curated",
+      "workflow_text": "name: web_research_brief\ndescription: Fetch a small set of URLs and produce a grounded summary brief.\nrisk_level: medium\nmanifest:\n  purpose: Build a concise research brief from trusted URLs.\n  tools: [web_retrieve]\n  data_scope: [public_web_content]\n  permissions: [network_read]\n  approval_policy: draft_only\n  rate_limits:\n    actions_per_hour: 20\n  budgets:\n    usd_cap: 1.0\n  kill_switch:\n    enabled: true\n  audit_sink: server.audit\n  failure_mode: fail_closed\nsteps:\n  - id: fetch_1\n    tool: web_retrieve\n    args:\n      url: \"$input.url_1\"\n    output: source_1\n  - id: fetch_2\n    tool: web_retrieve\n    args:\n      url: \"$input.url_2\"\n    output: source_2\n  - id: fetch_3\n    tool: web_retrieve\n    args:\n      url: \"$input.url_3\"\n    output: source_3\n  - id: summarize\n    model_call: |\n      Topic: $input.topic\n\n      Source 1:\n      $source_1\n\n      Source 2:\n      $source_2\n\n      Source 3:\n      $source_3\n\n      Return:\n      1) 5 bullet summary\n      2) key facts\n      3) open questions\n      Ground only in provided sources.\n    mode: single\n    output: brief\n"
+    },
+    {
+      "description": "Retrieve transcript-like text from a transcript endpoint URL.",
+      "id": "youtube_transcript_fetch",
+      "risk_level": "medium",
+      "tested": "schema",
+      "title": "YouTube Transcript Fetch",
+      "trust": "mmy-curated",
+      "workflow_text": "name: youtube_transcript_fetch\ndescription: Fetch transcript-like text from a provided URL and return a clean transcript report for downstream summarization.\nrisk_level: medium\nmanifest:\n  purpose: Retrieve transcript content from a user-provided transcript endpoint and normalize it for safe reuse.\n  tools: [web_retrieve]\n  data_scope: [public_web_content, transcript_text]\n  permissions: [network_read]\n  approval_policy: draft_only\n  rate_limits:\n    actions_per_hour: 30\n  budgets:\n    usd_cap: 1.0\n  kill_switch:\n    enabled: true\n  audit_sink: server.audit\n  failure_mode: fail_closed\nsteps:\n  - id: fetch_transcript_source\n    tool: web_retrieve\n    args:\n      url: \"$input.transcript_url\"\n    output: transcript_source\n  - id: build_transcript_report\n    model_call: |\n      You are preparing structured transcript output for another skill.\n\n      Input source (may include HTML, JSON, or plain text):\n      $transcript_source\n\n      Requirements:\n      1) Determine whether transcript text is present.\n      2) If present, extract and clean transcript text (remove HTML/navigation noise).\n      3) Preserve timestamp lines when present.\n      4) Keep output grounded strictly in the source.\n\n      Output exactly in this structure:\n      - transcript_found: yes|no\n      - source_type: html|json|text|unknown\n      - language: <value or unknown>\n      - cleaned_transcript:\n        <text or 'not_found'>\n      - key_points:\n        - <point 1>\n        - <point 2>\n        - <point 3>\n      - timestamp_coverage: full|partial|none\n      - notes_for_user:\n        <short note, including next step when transcript_found=no>\n    mode: single\n    output: transcript_report\n"
+    }
+  ],
+  "version": 1
+}

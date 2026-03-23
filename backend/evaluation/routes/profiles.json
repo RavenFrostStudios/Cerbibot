@@ -1,0 +1,84 @@
+{
+  "last_promotion": {
+    "applied_profile": "experimental",
+    "checks": {
+      "avg_cost": true,
+      "avg_latency_ms": true,
+      "empty_final": true,
+      "low_signal_rate": true
+    },
+    "metrics": {
+      "avg_cost": 0.0032,
+      "avg_latency_ms": 72000,
+      "empty_final": 0,
+      "low_signal": 1,
+      "runs": 10
+    },
+    "passed": true,
+    "thresholds": {
+      "max_avg_cost": 0.01,
+      "max_avg_latency_ms": 120000,
+      "max_empty_final": 0,
+      "max_low_signal_rate": 0.2
+    }
+  },
+  "profiles": {
+    "experimental": {
+      "routes": {
+        "consensus": {
+          "adjudicator_provider": "xai"
+        },
+        "council": {
+          "specialist_roles": {
+            "coding": "xai",
+            "factual": "xai",
+            "security": "openai",
+            "writing": "openai"
+          },
+          "synthesizer_provider": "xai"
+        },
+        "critique": {
+          "critic_provider": "openai",
+          "drafter_provider": "openai",
+          "refiner_provider": "openai"
+        },
+        "debate": {
+          "debater_a_provider": "openai",
+          "debater_b_provider": "openai",
+          "judge_provider": "xai",
+          "synthesizer_provider": "openai"
+        }
+      },
+      "saved_at": "2026-02-18T12:09:45.527670+00:00"
+    },
+    "stable": {
+      "routes": {
+        "consensus": {
+          "adjudicator_provider": "xai"
+        },
+        "council": {
+          "specialist_roles": {
+            "coding": "xai",
+            "factual": "xai",
+            "security": "openai",
+            "writing": "openai"
+          },
+          "synthesizer_provider": "xai"
+        },
+        "critique": {
+          "critic_provider": "openai",
+          "drafter_provider": "openai",
+          "refiner_provider": "openai"
+        },
+        "debate": {
+          "debater_a_provider": "openai",
+          "debater_b_provider": "openai",
+          "judge_provider": "xai",
+          "synthesizer_provider": "openai"
+        }
+      },
+      "saved_at": "2026-02-18T12:07:13.433840+00:00"
+    }
+  },
+  "updated_at": "2026-02-18T12:10:08.897793+00:00"
+}

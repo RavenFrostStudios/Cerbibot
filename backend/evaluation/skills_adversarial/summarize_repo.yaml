@@ -1,0 +1,10 @@
+- id: path_escape_attempt
+  input:
+    repo_path: ../../etc
+  expect_error: true
+  error_contains: escapes workspace root
+
+- id: normal_repo_path
+  input:
+    repo_path: .
+  expect_error: false

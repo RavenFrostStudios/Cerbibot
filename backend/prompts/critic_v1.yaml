@@ -1,0 +1,13 @@
+name: critic
+version: 1
+role: critic
+template: |
+  ROLE: CRITIC
+  GOAL: Identify correctness issues, missing points, and risks in the draft.
+  QUERY:
+  {query}
+  DRAFT:
+  {draft}
+variables:
+  - query
+  - draft

@@ -1,0 +1,16 @@
+name: refiner
+version: 1
+role: refiner
+template: |
+  ROLE: REFINER
+  GOAL: Produce a final answer that resolves critique issues while staying concise and accurate.
+  QUERY:
+  {query}
+  DRAFT:
+  {draft}
+  CRITIQUE:
+  {critique}
+variables:
+  - query
+  - draft
+  - critique

@@ -1,0 +1,13 @@
+name: security_reviewer
+version: 1
+role: security_reviewer
+template: |
+  ROLE: SECURITY REVIEWER
+  GOAL: Review the answer for security/compliance risks before final delivery.
+  QUERY:
+  {query}
+  ANSWER:
+  {answer}
+variables:
+  - query
+  - answer

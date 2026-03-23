@@ -1,0 +1,26 @@
+tool_allowlist:
+  - fetch_url
+  - parse_text
+
+tool_policies:
+  fetch_url:
+    max_calls_per_request: 3
+    requires_human_approval: false
+    allowed_arg_patterns:
+      url: "^https://[A-Za-z0-9._~:/?#\\[\\]@!$&'()*+,;=%-]+$"
+  parse_text:
+    max_calls_per_request: 5
+    requires_human_approval: false
+    allowed_arg_patterns: {}
+
+retrieval_policy:
+  domain_allowlist: []
+  domain_denylist:
+    - localhost
+    - 127.0.0.1
+
+high_impact_actions:
+  - external_contact
+  - file_write
+  - credential_use
+  - payment_transfer

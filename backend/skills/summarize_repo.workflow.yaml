@@ -1,0 +1,35 @@
+name: summarize_repo
+version: 1
+description: Summarize a repository based on git status and README.
+risk_level: low
+manifest:
+  purpose: "Repository summary workflow for local project context."
+  tools: [git_status, file_read]
+  data_scope: ["workspace_repo"]
+  permissions: ["read", "model_call"]
+  approval_policy: approve_high_risk
+  rate_limits:
+    actions_per_hour: 60
+  budgets:
+    usd_cap: 1.0
+  kill_switch:
+    enabled: true
+  audit_sink: "audit.jsonl"
+  failure_mode: "safe_abort"
+budget_cap_usd: 1.0
+steps:
+  - tool: git_status
+    args:
+      path: $input.repo_path
+    output: status
+  - tool: file_read
+    args:
+      path: $input.repo_path/README.md
+    output: readme
+  - model_call: |
+      Summarize this repository using the tool outputs below.
+      Git status output: $status
+      README output: $readme
+      Return a concise summary with key next actions.
+    mode: single
+    output: summary

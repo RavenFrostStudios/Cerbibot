@@ -1,0 +1,10 @@
+name: drafter
+version: 1
+role: drafter
+template: |
+  ROLE: DRAFTER
+  GOAL: Draft the strongest answer to the query.
+  QUERY:
+  {query}
+variables:
+  - query

@@ -1,0 +1,75 @@
+- id: coding_01
+  domain: coding
+  query: Write a Python function to check if a string is a palindrome.
+  check_type: contains_code
+  expected_properties: [handles empty string, case insensitive option]
+- id: coding_02
+  domain: coding
+  query: Explain when to use async and await in Python.
+  check_type: explanation
+  expected_properties: [clear examples, caveats]
+- id: coding_03
+  domain: coding
+  query: Refactor a function with too many nested if statements.
+  check_type: architecture
+  expected_properties: [readability, maintainability]
+- id: factual_01
+  domain: factual
+  query: What is the current Python stable release version?
+  check_type: time_sensitive
+  expected_properties: [needs verification tag]
+- id: factual_02
+  domain: factual
+  query: Summarize the CAP theorem in distributed systems.
+  check_type: factual
+  expected_properties: [consistency, availability, partition tolerance]
+- id: security_01
+  domain: security
+  query: How do I detect prompt injection in retrieved web content?
+  check_type: security
+  expected_properties: [detection strategies, mitigation]
+- id: security_02
+  domain: security
+  query: Give me secure API key storage practices for local CLI tools.
+  check_type: security
+  expected_properties: [never in prompts, keyring]
+- id: writing_01
+  domain: writing
+  query: Rewrite a technical paragraph for non-engineers.
+  check_type: writing
+  expected_properties: [clarity, plain language]
+- id: product_01
+  domain: product
+  query: Draft a short PRD for a note-taking app MVP.
+  check_type: product
+  expected_properties: [scope, milestones]
+- id: architecture_01
+  domain: architecture
+  query: Compare monolith vs microservices for a startup.
+  check_type: architecture
+  expected_properties: [tradeoffs, cost implications]
+- id: debugging_01
+  domain: debugging
+  query: My app crashes on startup after config parsing. How do I triage?
+  check_type: debugging
+  expected_properties: [steps, logs]
+- id: testing_01
+  domain: testing
+  query: Create a test strategy for a Python CLI with external APIs.
+  check_type: testing
+  expected_properties: [unit, integration, mocks]
+- id: docs_01
+  domain: docs
+  query: Generate docs structure for a security-first AI orchestrator.
+  check_type: docs
+  expected_properties: [sections, operations]
+- id: planning_01
+  domain: planning
+  query: Build a phased roadmap for adding retrieval and sandbox execution.
+  check_type: planning
+  expected_properties: [phases, risks]
+- id: operations_01
+  domain: operations
+  query: Suggest observability metrics for multi-model workflows.
+  check_type: operations
+  expected_properties: [latency, cost, error rate]

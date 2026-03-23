@@ -1,0 +1,49 @@
+- id: rollout-plan
+  query: Design a production rollout plan for a new billing engine in a SaaS app with feature flags, canary, rollback, and metrics.
+  draft: "Roll out to 100% in one day after staging tests."
+  critique: "Issues: blast-radius too high; Missing: rollback thresholds, segmentation, reconciliation checks; Risk Flags: revenue-impact incident risk."
+
+- id: security-architecture
+  query: Give a local-first AI app architecture with top five security controls and a 30-day implementation plan.
+  draft: "Use local storage and add encryption."
+  critique: "Issues: too generic; Missing: key management, model integrity, sync threat model, phased milestones; Risk Flags: key leakage."
+
+- id: feature-flags
+  query: Draft a production feature-flag rollout plan for a SaaS application and include auto-rollback criteria.
+  draft: "Enable to all users and monitor logs."
+  critique: "Issues: no canary gates; Missing: KPI thresholds, hold windows, kill switch ownership; Risk Flags: hidden regressions."
+
+- id: monolith-migration
+  query: Draft a migration plan from monolith to modular monolith and include risk mitigations.
+  draft: "Split code into modules and deploy."
+  critique: "Issues: no dependency mapping; Missing: contract tests, strangler sequence, ownership model; Risk Flags: integration breakage."
+
+- id: rate-limit-db
+  query: Compare Redis vs Postgres for API rate limiting, then provide a recommendation with tradeoffs.
+  draft: "Redis is faster and Postgres is durable."
+  critique: "Issues: no workload assumptions; Missing: failure-mode analysis, multi-region strategy; Risk Flags: hotspot and consistency tradeoffs omitted."
+
+- id: auth-review
+  query: "Review this auth strategy for coding, security, and UX risks: email/password plus optional TOTP plus device sessions."
+  draft: "Add 2FA and sessions."
+  critique: "Issues: lacks prioritization; Missing: recovery flows, phishing resistance, lockout policy, telemetry; Risk Flags: account takeover."
+
+- id: treasury-yield
+  query: Find the current US 10-year treasury yield and explain the trend in two lines.
+  draft: "Yield is unknown."
+  critique: "Issues: not grounded; Missing: source timestamp and trend basis; Risk Flags: stale-data claims."
+
+- id: nba-standings
+  query: What are the latest NBA standings right now?
+  draft: "The standings are available online."
+  critique: "Issues: no standings data; Missing: source freshness and teams/records; Risk Flags: incomplete snapshot."
+
+- id: crypto-prices
+  query: What is the current price of Bitcoin and Ethereum right now? Include source timestamps.
+  draft: "BTC and ETH prices fluctuate often."
+  critique: "Issues: no concrete values; Missing: retrieval time and source attribution; Risk Flags: ungrounded market figures."
+
+- id: release-notes
+  query: What are the latest release notes for Next.js 16?
+  draft: "Next.js 16 has many improvements."
+  critique: "Issues: vague; Missing: specific release items and date; Risk Flags: outdated claims."

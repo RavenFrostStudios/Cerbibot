@@ -1,0 +1,191 @@
+default_mode: single
+
+providers:
+  openai:
+    enabled: false
+    api_key_env: OPENAI_API_KEY
+    # Optional: pre-declare models that do not accept a temperature parameter.
+    # This avoids initial 400s before automatic capability detection kicks in.
+    temperature_unsupported_models: []
+    timeouts:
+      standard_seconds: 60
+      deep_seconds: 120
+    rate_limits:
+      rpm: 60
+      tpm: 120000
+      max_wait_seconds: 5
+    models:
+      fast: gpt-4o-mini
+      deep: gpt-4.1
+    pricing_usd_per_1m_tokens:
+      gpt-4o-mini:
+        input: 0.15
+        output: 0.60
+      gpt-4.1:
+        input: 5.00
+        output: 15.00
+  anthropic:
+    enabled: false
+    api_key_env: ANTHROPIC_API_KEY
+    timeouts:
+      standard_seconds: 60
+      deep_seconds: 120
+    rate_limits:
+      rpm: 60
+      tpm: 120000
+      max_wait_seconds: 5
+    models:
+      fast: claude-3-5-haiku-latest
+      deep: claude-3-7-sonnet-latest
+    pricing_usd_per_1m_tokens:
+      claude-3-5-haiku-latest:
+        input: 0.80
+        output: 4.00
+      claude-3-7-sonnet-latest:
+        input: 3.00
+        output: 15.00
+  local:
+    enabled: false
+    api_key_env: LOCAL_API_KEY
+    timeouts:
+      standard_seconds: 30
+      deep_seconds: 60
+    rate_limits:
+      rpm: 600
+      tpm: 500000
+      max_wait_seconds: 1
+    models:
+      fast: llama3.1:8b
+      deep: llama3.1:8b
+    pricing_usd_per_1m_tokens:
+      llama3.1:8b:
+        input: 0.00
+        output: 0.00
+  xai:
+    enabled: false
+    api_key_env: XAI_API_KEY
+    timeouts:
+      standard_seconds: 60
+      deep_seconds: 120
+    rate_limits:
+      rpm: 60
+      tpm: 120000
+      max_wait_seconds: 5
+    models:
+      fast: grok-2-mini
+      deep: grok-2-latest
+    pricing_usd_per_1m_tokens:
+      grok-2-mini:
+        input: 0.50
+        output: 2.00
+      grok-2-latest:
+        input: 5.00
+        output: 15.00
+  google:
+    enabled: false
+    api_key_env: GOOGLE_API_KEY
+    timeouts:
+      standard_seconds: 60
+      deep_seconds: 120
+    rate_limits:
+      rpm: 60
+      tpm: 120000
+      max_wait_seconds: 5
+    models:
+      fast: gemini-2.0-flash
+      deep: gemini-2.5-pro
+    pricing_usd_per_1m_tokens:
+      gemini-2.0-flash:
+        input: 0.15
+        output: 0.60
+      gemini-2.5-pro:
+        input: 1.25
+        output: 5.00
+
+budgets:
+  session_usd_cap: 5.0
+  daily_usd_cap: 10.0
+  monthly_usd_cap: 100.0
+  usage_file: ~/.mmo/usage.json
+
+security:
+  block_on_secrets: true
+  redact_logs: true
+  data_protection:
+    encrypt_at_rest: true
+    key_provider: os_keyring
+    passphrase_env: MMO_MASTER_PASSPHRASE
+  tool_allowlist:
+    - file_read
+    - file_search
+    - git_status
+    - web_retrieve
+    - json_query
+    - regex_test
+    - system_info
+    - python_exec
+    - web_search
+    - fetch_url
+    - parse_text
+  retrieval_domain_allowlist: []
+  retrieval_domain_denylist:
+    - localhost
+    - 127.0.0.1
+
+routing:
+  critique:
+    drafter_provider: openai
+    critic_provider: anthropic
+    refiner_provider: openai
+
+retrieval:
+  search_provider: auto
+  max_results: 5
+  max_fetch_bytes: 200000
+  timeout_seconds: 10
+
+local_routing:
+  enabled: true
+  local_provider_name: local
+  quality_threshold: 0.65
+
+router_weights:
+  enabled: true
+  learning_rate: 0.2
+  weights_file: ~/.mmo/router_weights.json
+  domain_provider_overrides: {}
+
+artifacts:
+  enabled: true
+  directory: ~/.mmo/artifacts
+  retention_days: 30
+
+prompts:
+  directory: prompts
+  selection:
+    drafter: drafter_latest
+    critic: critic_latest
+    refiner: refiner_latest
+    security_reviewer: security_reviewer_latest
+
+server:
+  enabled: false
+  host: "127.0.0.1"
+  port: 8100
+  api_key_env: "MMO_SERVER_API_KEY"
+  cors_origins:
+    - "http://localhost:3000"
+    - "http://127.0.0.1:3000"
+    - "http://localhost:3001"
+    - "http://127.0.0.1:3001"
+
+integrations:
+  discord:
+    enabled: false
+    bot_token_env: "DISCORD_BOT_TOKEN"
+    allowed_channels: []
+    per_user_daily_cap: 50
+
+skills:
+  require_signature: false
+  trusted_public_keys: []

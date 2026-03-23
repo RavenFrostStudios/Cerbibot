@@ -1,0 +1,226 @@
+{
+  "strategy": "balanced",
+  "fixtures_path": "evaluation/roles/critique_roles.yaml",
+  "fixtures_total": 10,
+  "enabled_providers": [
+    "google",
+    "openai",
+    "xai"
+  ],
+  "ranked": {
+    "drafter": [
+      {
+        "role": "drafter",
+        "provider": "xai",
+        "model": "grok-4-1-fast-reasoning",
+        "samples_total": 10,
+        "samples_succeeded": 10,
+        "samples_failed": 0,
+        "json_valid_rate": 0.6,
+        "placeholder_rate": 0.0,
+        "low_signal_rate": 0.0,
+        "avg_quality": 1.0,
+        "avg_latency_ms": 9436.4,
+        "avg_cost": 0.00094825,
+        "error_rate": 0.0,
+        "sample_errors": [],
+        "score": 0.7058354911099604
+      },
+      {
+        "role": "drafter",
+        "provider": "openai",
+        "model": "gpt-5.2-2025-12-11",
+        "samples_total": 10,
+        "samples_succeeded": 10,
+        "samples_failed": 0,
+        "json_valid_rate": 0.4,
+        "placeholder_rate": 0.6,
+        "low_signal_rate": 0.6,
+        "avg_quality": 0.4,
+        "avg_latency_ms": 11896.2,
+        "avg_cost": 0.00030466499999999997,
+        "error_rate": 0.0,
+        "sample_errors": [],
+        "score": 0.4774818092001019
+      },
+      {
+        "role": "drafter",
+        "provider": "google",
+        "model": "gemini-2.5-pro",
+        "samples_total": 10,
+        "samples_succeeded": 10,
+        "samples_failed": 0,
+        "json_valid_rate": 0.0,
+        "placeholder_rate": 0.9,
+        "low_signal_rate": 0.9,
+        "avg_quality": 0.1,
+        "avg_latency_ms": 8517.5,
+        "avg_cost": 0.000105,
+        "error_rate": 0.0,
+        "sample_errors": [],
+        "score": 0.33800619834710743
+      }
+    ],
+    "critic": [
+      {
+        "role": "critic",
+        "provider": "xai",
+        "model": "grok-4-1-fast-reasoning",
+        "samples_total": 10,
+        "samples_succeeded": 10,
+        "samples_failed": 0,
+        "json_valid_rate": 1.0,
+        "placeholder_rate": 0.0,
+        "low_signal_rate": 0.0,
+        "avg_quality": 0.96,
+        "avg_latency_ms": 5231.1,
+        "avg_cost": 0.0004526,
+        "error_rate": 0.0,
+        "sample_errors": [],
+        "score": 0.8220077472181397
+      },
+      {
+        "role": "critic",
+        "provider": "openai",
+        "model": "gpt-5.2-2025-12-11",
+        "samples_total": 10,
+        "samples_succeeded": 10,
+        "samples_failed": 0,
+        "json_valid_rate": 0.5,
+        "placeholder_rate": 0.5,
+        "low_signal_rate": 0.5,
+        "avg_quality": 0.5,
+        "avg_latency_ms": 12852.1,
+        "avg_cost": 0.000314685,
+        "error_rate": 0.0,
+        "sample_errors": [],
+        "score": 0.5398069499254313
+      },
+      {
+        "role": "critic",
+        "provider": "google",
+        "model": "gemini-2.5-pro",
+        "samples_total": 10,
+        "samples_succeeded": 10,
+        "samples_failed": 0,
+        "json_valid_rate": 0.1,
+        "placeholder_rate": 0.9,
+        "low_signal_rate": 0.9,
+        "avg_quality": 0.1,
+        "avg_latency_ms": 8371.6,
+        "avg_cost": 0.00016287500000000002,
+        "error_rate": 0.0,
+        "sample_errors": [],
+        "score": 0.329001508580049
+      }
+    ],
+    "refiner": [
+      {
+        "role": "refiner",
+        "provider": "xai",
+        "model": "grok-4-1-fast-reasoning",
+        "samples_total": 10,
+        "samples_succeeded": 10,
+        "samples_failed": 0,
+        "json_valid_rate": 1.0,
+        "placeholder_rate": 0.0,
+        "low_signal_rate": 0.0,
+        "avg_quality": 0.955,
+        "avg_latency_ms": 8944.0,
+        "avg_cost": 0.0009020499999999999,
+        "error_rate": 0.0,
+        "sample_errors": [],
+        "score": 0.761654731910417
+      },
+      {
+        "role": "refiner",
+        "provider": "openai",
+        "model": "gpt-5.2-2025-12-11",
+        "samples_total": 10,
+        "samples_succeeded": 10,
+        "samples_failed": 0,
+        "json_valid_rate": 0.4,
+        "placeholder_rate": 0.6,
+        "low_signal_rate": 0.6,
+        "avg_quality": 0.4,
+        "avg_latency_ms": 11140.4,
+        "avg_cost": 0.000291465,
+        "error_rate": 0.0,
+        "sample_errors": [],
+        "score": 0.48110895617620486
+      },
+      {
+        "role": "refiner",
+        "provider": "google",
+        "model": "gemini-2.5-pro",
+        "samples_total": 10,
+        "samples_succeeded": 10,
+        "samples_failed": 0,
+        "json_valid_rate": 0.0,
+        "placeholder_rate": 1.0,
+        "low_signal_rate": 1.0,
+        "avg_quality": 0.0,
+        "avg_latency_ms": 8175.0,
+        "avg_cost": 0.00012925,
+        "error_rate": 0.0,
+        "sample_errors": [],
+        "score": 0.278108859753675
+      }
+    ]
+  },
+  "winners": {
+    "drafter": "xai",
+    "critic": "xai",
+    "refiner": "xai"
+  },
+  "recommended_routes": {
+    "critique": {
+      "drafter_provider": "xai",
+      "critic_provider": "xai",
+      "refiner_provider": "xai"
+    },
+    "debate": {
+      "debater_a_provider": "google",
+      "debater_b_provider": "openai",
+      "judge_provider": "xai",
+      "synthesizer_provider": "google"
+    },
+    "consensus": {
+      "adjudicator_provider": "openai"
+    },
+    "council": {
+      "specialist_roles": {
+        "coding": "xai",
+        "security": "google",
+        "writing": "openai",
+        "factual": "xai"
+      },
+      "synthesizer_provider": "google"
+    }
+  },
+  "applied_routes": {
+    "critique": {
+      "drafter_provider": "xai",
+      "critic_provider": "xai",
+      "refiner_provider": "xai"
+    },
+    "debate": {
+      "debater_a_provider": "google",
+      "debater_b_provider": "openai",
+      "judge_provider": "xai",
+      "synthesizer_provider": "google"
+    },
+    "consensus": {
+      "adjudicator_provider": "openai"
+    },
+    "council": {
+      "specialist_roles": {
+        "coding": "xai",
+        "security": "google",
+        "writing": "openai",
+        "factual": "xai"
+      },
+      "synthesizer_provider": "google"
+    }
+  }
+}

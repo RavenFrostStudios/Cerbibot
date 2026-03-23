@@ -1,0 +1,13 @@
+.venv/
+venv/
+env/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+multi_mind_orchestrator.egg-info/
+*.egg-info/
+evaluation/agent_tasks/suite_reports/

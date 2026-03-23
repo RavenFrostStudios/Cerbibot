@@ -1,0 +1,23 @@
+{
+  "mode": "debate",
+  "summary": {
+    "avg_cost": 0.001916,
+    "avg_latency_ms": 65364,
+    "empty_final": 5,
+    "low_signal": 2,
+    "request_ids": [
+      "e6cb72ca-c482-4e60-81e0-d61b07848a4a",
+      "032d1703-0297-4244-ae48-ee792c1d0dc5",
+      "72da776c-bd37-44a9-97fa-5e2fbd05d99c",
+      "493945f7-d722-46e2-b9f0-5f427a75f295",
+      "7100d21a-7bdc-4636-a155-32700470f3df"
+    ],
+    "runs": 5
+  },
+  "thresholds": {
+    "max_avg_cost": 0.01,
+    "max_avg_latency_ms": 120000,
+    "max_empty_final": 0,
+    "max_low_signal_rate": 0.2
+  }
+}

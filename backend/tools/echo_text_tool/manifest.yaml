@@ -1,0 +1,13 @@
+name: echo_text
+description: Echoes text for safe plugin demonstration
+arg_schema:
+  text: string
+required_capabilities:
+  - low_risk
+sandbox_config:
+  network_enabled: false
+  cpu_limit: 1.0
+  memory_limit_mb: 128
+  timeout_seconds: 5
+max_calls_per_request: 3
+requires_human_approval: false

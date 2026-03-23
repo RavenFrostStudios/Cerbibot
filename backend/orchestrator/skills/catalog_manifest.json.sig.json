@@ -1,0 +1,8 @@
+{
+  "algorithm": "ed25519",
+  "checksum": "sha256:458f1ccc355731d1403cc0ec686ac9778e03a461a7c942c9fa41e5f1dd46a01b",
+  "public_key_fingerprint": "80e4b11b7a607138",
+  "signature_b64": "JEazZNi8ATVBtkebOTy/g0EfmKaxejCaLsh1x41RqXRSiM/zFFhUHKXCTmD68Z++oc1i3uESAUCTgkUoTpftAw==",
+  "signed_at": "2026-02-15T08:14:00.105060+00:00",
+  "signer": "mmy-curated-catalog-v2"
+}
