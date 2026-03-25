@@ -8,9 +8,9 @@ DASH_DIR="$ROOT/dashboard"
 STATE_DIR="/tmp/cerbibot-local-stack"
 PID_FILE="$STATE_DIR/pids.env"
 
-HOST="${MMY_HOST:-127.0.0.1}"
-PORT="${MMY_PORT:-8100}"
-DASH_PORT="${MMY_DASH_PORT:-3000}"
+HOST="${CERBIBOT_HOST:-127.0.0.1}"
+PORT="${CERBIBOT_PORT:-8100}"
+DASH_PORT="${CERBIBOT_DASH_PORT:-3000}"
 START_DASHBOARD=1
 START_DELEGATE=1
 
@@ -26,9 +26,9 @@ Options:
   --help           Show this help
 
 Environment overrides:
-  MMY_HOST
-  MMY_PORT
-  MMY_DASH_PORT
+  CERBIBOT_HOST
+  CERBIBOT_PORT
+  CERBIBOT_DASH_PORT
 EOF
 }
 
@@ -82,7 +82,7 @@ start_bg() {
   echo "$pid"
 }
 
-echo "Starting MMY local stack..."
+echo "Starting CerbiBot local stack..."
 
 ORCH_PID=$(start_bg orchestrator "$ORCH_LOG" bash -lc "cd \"$ORCH_DIR\" && python3 -m mmctl serve --host $HOST --port $PORT")
 sleep 1
@@ -110,7 +110,7 @@ DASH_LOG=$DASH_LOG
 EOF
 
 cat <<EOF
-MMY local stack started.
+CerbiBot local stack started.
 
 Backend:
   URL: http://$HOST:$PORT

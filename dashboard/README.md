@@ -1,9 +1,8 @@
-# MMY Orchestrator Dashboard
+# CerbiBot Dashboard
 
-Next.js dashboard for the Multi-Mind Orchestrator backend.
+Next.js dashboard for the CerbiBot backend.
 
-This repo is the UI layer for CerbiBot. It is intended to run against the backend in:
-- `multi-mind-orchestrator`
+This is the operator UI layer for CerbiBot.
 
 ## What It Includes
 
@@ -18,7 +17,7 @@ This repo is the UI layer for CerbiBot. It is intended to run against the backen
 ## Local Development
 
 ```bash
-cd /mnt/i/AI\ Project/ai-orchestrator-dashboard
+cd dashboard
 npm install
 npm run dev
 ```
@@ -32,7 +31,7 @@ http://localhost:3000
 ## Production Build
 
 ```bash
-cd /mnt/i/AI\ Project/ai-orchestrator-dashboard
+cd dashboard
 npm run build -- --webpack
 ```
 
@@ -43,19 +42,19 @@ The dashboard expects the MMY daemon API to be running separately.
 Typical backend startup:
 
 ```bash
-cd /mnt/i/AI\ Project/multi-mind-orchestrator
+cd backend
 python3 -m mmctl serve --host 127.0.0.1 --port 8100
 ```
 
-Or use the workspace helper:
+Or use the monorepo helper:
 
 ```bash
-bash /mnt/i/AI\ Project/run_local_stack.sh
+bash scripts/run_local_stack.sh
 ```
 
 ## Current State
 
-This dashboard is part of the current MMY public technical preview stack.
+This dashboard is part of the current CerbiBot public technical preview stack.
 
 It now passes:
 - TypeScript type-checking

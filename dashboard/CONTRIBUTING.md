@@ -2,16 +2,14 @@
 
 ## Scope
 
-This repository is the dashboard/UI for CerbiBot, backed by:
-- `../multi-mind-orchestrator`
+This repository is the dashboard/UI for CerbiBot.
 
-Keep UI work aligned with the backend API and current release/status docs in the
-workspace root.
+Keep UI work aligned with the backend API and current public product documentation.
 
 ## Setup
 
 ```bash
-cd /mnt/i/AI\ Project/ai-orchestrator-dashboard
+cd dashboard
 npm install
 npx tsc --noEmit
 npm run build -- --webpack

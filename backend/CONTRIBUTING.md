@@ -2,19 +2,12 @@
 
 ## Before You Start
 
-This repository currently treats the local workspace as canonical during active
-development. Check the current release/status docs before assuming older git
-history or archived notes are still accurate.
-
-Relevant root docs:
-- `../MMY_Public_Release_Status_2026-03-18.md`
-- `../MMY_Canonical_Tracker.md`
-- `../MMY_RC_Gate_Runbook.md`
+Keep changes scoped and assume the monorepo is the public source of truth.
 
 ## Setup
 
 ```bash
-cd /mnt/i/AI\ Project/multi-mind-orchestrator
+cd backend
 python3 -m pip install -e .[dev]
 make smoke
 make test
@@ -34,11 +27,7 @@ Minimum validation for most changes:
 
 ```bash
 make test
-bash /mnt/i/AI\ Project/run_rc_sweep.sh
 ```
-
-For release-sensitive work, also refresh the relevant acceptance or pentest
-artifacts described in the root MMY status docs.
 
 ## Style
 

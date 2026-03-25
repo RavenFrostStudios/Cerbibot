@@ -1,6 +1,6 @@
-# Multi-Mind Orchestrator
+# CerbiBot Backend
 
-CLI-first, security-first orchestration for local/self-hosted multi-mode LLM work.
+Security-first orchestration backend for local and self-hosted CerbiBot workflows.
 
 Multi-Mind Orchestrator focuses on:
 - multi-mode orchestration: `single`, `critique`, `retrieval`, `debate`, `consensus`, `council`
@@ -9,30 +9,22 @@ Multi-Mind Orchestrator focuses on:
 - provider management, diagnostics, and daemon-backed API control
 - delegation workflows that produce patch-first artifacts
 
-This repository currently pairs with the dashboard in `../ai-orchestrator-dashboard`.
-
 ## Project Status
 
 Current release posture:
 - ready for public technical preview
 - not yet positioned as a polished broad public release
 
-See the current release/status docs in the workspace root:
-- `../MMY_Public_Release_Status_2026-03-18.md`
-- `../MMY_Canonical_Tracker.md`
-- `../MMY_Live_Acceptance_Report.md`
-- `../MMY_Local_Pentest_Report.md`
-
 ## Repository Notes
 
-- `LICENSE` is currently a temporary placeholder until the final outbound license is selected.
+- `LICENSE` defines the public license for this code.
 - Security reporting guidance lives in `SECURITY.md`.
 - Contribution guidance lives in `CONTRIBUTING.md`.
 
 ## Quickstart
 
 ```bash
-cd /mnt/i/AI\ Project/multi-mind-orchestrator
+cd backend
 make setup
 make smoke
 make test
@@ -48,7 +40,7 @@ make test
 Dashboard app:
 
 ```bash
-cd /mnt/i/AI\ Project/ai-orchestrator-dashboard
+cd dashboard
 npm install
 npm run build -- --webpack
 ```
@@ -167,13 +159,8 @@ python3 -m mmctl serve --host 127.0.0.1 --port 8100
 Fast local release sweep:
 
 ```bash
-bash /mnt/i/AI\ Project/run_rc_sweep.sh
+bash scripts/run_local_stack.sh --backend-only
 ```
-
-Additional release-oriented docs live in the workspace root:
-- `../MMY_RC_Gate_Runbook.md`
-- `../MMY_Live_Acceptance_Report.md`
-- `../MMY_Local_Pentest_Report.md`
 
 Workspace policy (`.delegate.yaml`) is supported at repo root for delegation jobs:
 
@@ -208,7 +195,7 @@ Required manifest fields:
 - `failure_mode`
 
 Risk handling behavior:
-- MMY computes a per-step risk level (`low`, `medium`, `high`) from tool type + argument markers.
+- CerbiBot computes a per-step risk level (`low`, `medium`, `high`) from tool type + argument markers.
 - `approval_policy` controls escalation:
   - `draft_only`: blocks medium/high risk steps.
   - `approve_actions`: requires human approval for medium/high.
@@ -237,21 +224,6 @@ steps:
   - model_call: "hello"
     output: out
 ```
-
-## Context Discipline (RLM Workflow)
-
-For large/long-running implementation cycles, use the adopted context workflow:
-
-- `MAP -> FOCUS -> PEEK -> DIGEST -> ACT`
-- Keep working notes updated in:
-  - `multi-mind-orchestrator/.ctx/context_map.md`
-  - `multi-mind-orchestrator/.ctx/decisions.md`
-  - `multi-mind-orchestrator/.ctx/open_questions.md`
-  - `multi-mind-orchestrator/.ctx/risks.md`
-  - `multi-mind-orchestrator/.ctx/sources.md`
-
-Reference adoption notes:
-- `../MMY_RLM_Context_Adoption.md`
 
 ## Tool Plugins
 

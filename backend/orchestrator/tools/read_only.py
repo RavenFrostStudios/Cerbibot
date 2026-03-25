@@ -30,7 +30,7 @@ def resolve_workspace_path(raw_path: str) -> Path:
         candidate = root / candidate
     resolved = candidate.resolve()
     if not resolved.is_relative_to(root):
-        raise ValueError(f"path escapes workspace root: {raw_path}")
+        raise ValueError(f"path escapes allowed root: {raw_path}")
     return resolved
 
 

@@ -40,7 +40,7 @@ def built_in_manifests() -> dict[str, ToolManifest]:
     return {
         "file_read": ToolManifest(
             name="file_read",
-            description="Read a UTF-8 text file within the configured workspace root.",
+            description="Read a UTF-8 text file within the configured repository root.",
             arg_schema={"path": "string"},
             required_capabilities=["fs.read.scoped"],
             sandbox_config=SandboxConfig(network_enabled=False, cpu_limit=0.5, memory_limit_mb=128, timeout_seconds=5),
@@ -49,7 +49,7 @@ def built_in_manifests() -> dict[str, ToolManifest]:
         ),
         "file_search": ToolManifest(
             name="file_search",
-            description="Search for a plain-text pattern within workspace files.",
+            description="Search for a plain-text pattern within repository files.",
             arg_schema={"path": "string", "pattern": "string"},
             required_capabilities=["fs.search.scoped"],
             sandbox_config=SandboxConfig(network_enabled=False, cpu_limit=0.5, memory_limit_mb=256, timeout_seconds=8),
