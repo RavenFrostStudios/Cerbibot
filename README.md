@@ -5,7 +5,7 @@ CerbiBot is a security-first local AI orchestration platform from RavenFrost Stu
 This monorepo combines:
 - `backend/`: the Multi-Mind Orchestrator daemon, CLI, orchestration logic, governed skills, artifacts, and control-plane APIs
 - `dashboard/`: the CerbiBot operator dashboard
-- `docs/`: feature, launch, website, and handoff documentation
+- `docs/`: public product and launch documentation
 - `scripts/`: local stack startup and shutdown helpers
 
 ## Quick Start
@@ -41,7 +41,5 @@ cerbibot/
 
 CerbiBot is currently positioned as a public technical preview.
 
-Current release and website handoff material lives under:
+Current release documentation lives under:
 - `docs/LAUNCH_SUMMARY.md`
-- `docs/website_content_2026-03-21/`
-- `docs/website_review_2026-03-22/`
