@@ -2200,6 +2200,22 @@ async def test_server_ui_settings_persist_across_app_restart(
 
 
 @pytest.mark.asyncio
+async def test_server_connectors_status_endpoint(monkeypatch: pytest.MonkeyPatch) -> None:
+    monkeypatch.setenv("MMO_SERVER_API_KEY", "secret")
+    app = create_app(_FakeOrchestrator())
+    headers = {"Authorization": "Bearer secret"}
+    transport = httpx.ASGITransport(app=app)
+    async with httpx.AsyncClient(transport=transport, base_url="http://testserver") as client:
+        resp = await client.get("/v1/server/connectors", headers=headers)
+
+    assert resp.status_code == 200
+    payload = resp.json()
+    assert "connectors" in payload
+    assert payload["connectors"][0]["name"] == "discord"
+    assert payload["connectors"][0]["status"] == "disabled"
+
+
+@pytest.mark.asyncio
 async def test_server_mcp_servers_endpoints_persist(
     monkeypatch: pytest.MonkeyPatch, tmp_path: Path
 ) -> None:

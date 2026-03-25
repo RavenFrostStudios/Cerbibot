@@ -219,7 +219,7 @@ class Orchestrator:
         }
         if summary:
             state["summary"] = summary
-        return _prune(state)  # compact handoff payload for subsequent phases/UI
+        return _prune(state)  # compact shared state payload for subsequent phases/UI
 
     @staticmethod
     def _is_cloud_provider(provider_name: str) -> bool:
@@ -3630,7 +3630,7 @@ class Orchestrator:
             logger.warning("fact_check_failed", extra={"error": str(exc)})
             return [
                 VerifiedClaim(
-                    claim="fact_check_internal_error",
+                    claim="fact_check_processing_error",
                     classification="time_sensitive",
                     verified=False,
                     sources=[],

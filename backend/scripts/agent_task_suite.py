@@ -201,7 +201,7 @@ def _check_task8(output_path: Path) -> dict[str, Any]:
 
 
 def main() -> int:
-    parser = argparse.ArgumentParser(description="Run/check internal agent task suite (tasks 01-07, optional live task 08).")
+    parser = argparse.ArgumentParser(description="Run/check agent task suite (tasks 01-07, optional live task 08).")
     parser.add_argument("--run", action="store_true", help="Run tasks before checking results.")
     parser.add_argument("--config", default="config/config.example.yaml", help="Config path for mmctl batch run.")
     parser.add_argument(

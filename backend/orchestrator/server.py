@@ -15,6 +15,7 @@ from typing import Any
 from uuid import uuid4
 
 from starlette.requests import Request
+from orchestrator.connectors import build_connector_registry
 from orchestrator.config import DataProtectionConfig
 from orchestrator.observability.audit import AuditLogger
 from orchestrator.security.encryption import build_envelope_cipher
@@ -862,6 +863,11 @@ def create_app(orchestrator):
     @app.get("/v1/server/ui-settings")
     async def get_ui_settings(_: None = Depends(require_auth)):
         return {"settings": dict(ui_settings)}
+
+    @app.get("/v1/server/connectors")
+    async def get_connectors(_: None = Depends(require_auth)):
+        registry = build_connector_registry(orchestrator.config)
+        return {"connectors": [item.to_dict() for item in registry.list()]}
 
     @app.put("/v1/server/ui-settings")
     async def put_ui_settings(payload: dict[str, Any], _: None = Depends(require_auth)):
