@@ -268,35 +268,17 @@ Discovered tools are auto-loaded by `orchestrator.tools.registry.load_tool_regis
 - `make typecheck` run mypy if installed
 - `make format` run ruff formatter if installed
 - `make clean` clear caches and build artifacts
-- `make ctx-tree` context tree listing (RLM MAP stage)
-- `make ctx-rg` context search (RLM FOCUS stage)
-- `make ctx-peek` bounded file peek (RLM PEEK stage)
-- `make ctx-digest` bounded digest across files (RLM DIGEST stage)
-- `make ctx-start` append a timestamped workstream block to `.ctx/context_map.md` (RLM ACT prep)
 
 Examples:
 
 ```bash
-make ctx-tree CTX_DEPTH=3
-make ctx-rg CTX_PATTERN="provider config" CTX_ROOT=orchestrator
-make ctx-peek CTX_FILE=orchestrator/server.py CTX_START=1 CTX_END=220
-make ctx-digest CTX_FILES="README.md orchestrator/router.py" CTX_MAX_LINES=80
-make ctx-start CTX_TASK="provider-catalog-live-fetch" CTX_OWNER="raven"
+make smoke
+make test
+make clean
 ```
 
-## Current Status
+## Current Capabilities
 
-Completed:
-- Phase 1 core scaffold and architecture (single-process CLI)
-- OpenAI + Anthropic provider adapters
-- Guardian Layer 0 scanners and redaction
-- Budget tracking and spend-cap enforcement
-- Draft-Critique-Refine workflow
-- Eval harness with task fixtures
-- Unit and integration test scaffolding (including CLI tests)
-- Resilience fallback behavior for partial critique workflow failures
-- Streaming output in `mmctl ask` with `--no-stream` override
-- Multi-turn interactive `mmctl chat` with rolling context and `/clear`, `/cost`, `/exit`
 - Retrieval-first mode with source fetching, sanitization, and citation output
 - Fact-checking pipeline with verification notes (`--fact-check`, enabled by default in retrieval mode)
 - Debate mode with two-round adversarial arguments and judge synthesis
@@ -317,8 +299,8 @@ When enabling encryption with `key_provider: passphrase`, set `MMO_MASTER_PASSPH
 - Delegation gateway MVP (`mmctl delegate`) with git worktree isolation and patch/check/risk artifacts
 - xAI + Google provider adapters (configurable and usable via `--provider`)
 
-Next (recommended):
-- Run full `pytest` in an environment with dev deps installed
-- Add richer integration tests for provider-specific edge responses
-- Tune collaboration prompts and structured output contracts with live API runs
-- Add retrieval/fact-check pipeline (Phase 3 in `Plan.md`)
+## Release Status
+
+CerbiBot backend is currently part of the public technical preview stack.
+
+The current focus is product hardening, connector expansion, and operator experience refinement rather than introducing a separate phased rewrite.
